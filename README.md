@@ -1,1 +1,1 @@
-# Image-Gallery.-project
+# code-alpha-image-gallery-project
