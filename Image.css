@@ -1,0 +1,195 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e;
+    color: #000000;
+    line-height: 1.6;
+}
+.gallery-container{
+    max-width:1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+.gallery-container h1{
+    font-size: 42px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+.gallery-container p{
+    font-size: 16px;
+    color: #b0b0b0;
+    margin-bottom: 30px;
+}
+.filter-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.filter-btn{
+    padding: 10px 25px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid #e94560;
+    border-radius: 25px;
+    background-color: transparent;
+    color: #e94560;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.filter-btn:hover{
+    background-color: #e94560;
+    color:#fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
+}
+.filter-btn.active{
+    background-color: #e94560;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+}
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0, 0, 0, 0.3);
+    cursor:pointer;
+    aspect-ratio: 1/1;
+    background-color: #16213e;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-item img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    display:block;
+    transition: transform 0.5s ease;
+}
+.gallery-item:hover{
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+.gallery-item:hover img{
+    transform: scale(1.1);
+}
+.gallery-item .caption{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color:#ffffff;
+    padding: 20px 15px 15px;
+    font-size:16px;
+    font-weight:500;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+.gallery-item:hover .caption{
+    transform: translateY(0);
+}
+.lightbox{
+    inset: 0;
+    position:fixed;
+    display:none;
+    justify-content: center;
+    z-index: 1000;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+}
+.lightbox-img {
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 80vh;
+    transition: opacity 0.2s ease;
+}
+.lightbox button{
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    position:absolute;
+    color:#fff;
+    border:2px solid #fff;
+    font-size: 18px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.lightbox button:hover{
+    background: #e94560;
+    border-color: #e94560;
+}
+.close-btn{
+    top: 20px;
+    right: 30px;
+}
+.lightbox-prev{
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+}
+.lightbox-next{
+    top:50%;
+    right:50px;
+    transform:translateY(-50%);
+}
+.lightbox-caption{
+    color:#fff;
+    margin-top:15px;
+    font-size:15px;
+}
+@media(max-width: 768px){
+    .gallery-container h1{
+        font-size: 28px;
+    }
+    .gallery-grid{
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap:15px;
+    }
+    .filter-btn{
+        padding:8px 18px;
+        font-size: 12px;
+    }
+    .lightbox-img{
+        max-width: 98%;
+        max-height: 75vh;
+    }
+    .lightbox button{
+        width:40px;
+        height:40px;
+        font-size:16px;
+    }
+}
+@media(max-width:480px){
+    .gallery-container h1{
+        font-size:24px;
+    }
+    .gallery-grid{
+        grid-template-columns: 1fr;
+        gap:10px;
+    }
+    .filter-buttons{
+        gap:8px;
+    }
+    .lightbox-prev,.lightbox-next{
+        display:none;
+    }
+}
